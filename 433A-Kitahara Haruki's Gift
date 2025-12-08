@@ -1,0 +1,17 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main(){
+    int n, x, c100 = 0, c200 = 0;
+    cin >> n;
+    while(n--){
+        cin >> x;
+        if(x == 100) c100++;
+        else c200++;
+    }
+    if((c100 % 2 == 0) && (c200 % 2 == 0 || c100 >= 2))
+        cout << "YES";
+    else
+        cout << "NO";
+}
+
+
