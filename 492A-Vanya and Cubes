@@ -1,0 +1,12 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main(){
+    int n, h = 0, need = 1, used = 0;
+    cin >> n;
+    while(used + need <= n){
+        used += need;
+        h++;
+        need += h + 1;
+    }
+    cout << h;
+}
