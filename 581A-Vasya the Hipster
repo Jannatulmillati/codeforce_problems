@@ -1,0 +1,8 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main(){
+    int a, b; cin >> a >> b;
+    int stylish = min(a, b);
+    int left = (max(a, b) - stylish) / 2;
+    cout << stylish << " " << left;
+}
