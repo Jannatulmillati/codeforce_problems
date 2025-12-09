@@ -1,0 +1,31 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+long long power(long long base, long long exp) {
+    long long res = 1;
+    base %= 1000000007;
+    while (exp > 0) {
+        if (exp % 2 == 1) res = (res * base) % 1000000007;
+        base = (base * base) % 1000000007;
+        exp /= 2;
+    }
+    return res;
+}
+
+int countGoodNumbers(long long n) {
+    long long evenPos = (n + 1) / 2;
+    long long oddPos = n / 2;
+    
+    long long evens = power(5, evenPos);
+    long long odds = power(4, oddPos);
+    
+    return (evens * odds) % 1000000007;
+}
+
+int main() {
+    long long n;
+    if (cin >> n) {
+        cout << countGoodNumbers(n) << endl;
+    }
+    return 0;
+}
