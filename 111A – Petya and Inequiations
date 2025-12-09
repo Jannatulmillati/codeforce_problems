@@ -1,0 +1,16 @@
+
+
+#include <bits/stdc++.h>
+using namespace std;
+int main(){
+    long long n, k, s;
+    cin >> n >> k >> s;
+    if(k > s || k*n < s){
+        cout << "NO";
+        return 0;
+    }
+    cout << "YES\n";
+    long long rem = s - (k - 1);
+    cout << rem << " ";
+    for(int i=1;i<k;i++) cout << 1 << " ";
+}
