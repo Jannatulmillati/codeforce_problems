@@ -1,0 +1,49 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+void dijkstra(int n, vector<vector<int>>& adj, int src) {
+    vector<int> dist(n, INT_MAX);
+    vector<bool> visited(n, false);
+
+    dist[src] = 0;
+
+    for (int i = 0; i < n; i++) {
+        int u = -1;
+
+        for (int j = 0; j < n; j++) {
+            if (!visited[j] && (u == -1 || dist[j] < dist[u])) {
+                u = j;
+            }
+        }
+
+        if (dist[u] == INT_MAX) break;
+
+        visited[u] = true;
+
+        for (int v = 0; v < n; v++) {
+            if (adj[u][v] != 0 && !visited[v]) {
+                if (dist[u] + adj[u][v] < dist[v]) {
+                    dist[v] = dist[u] + adj[u][v];
+                }
+            }
+        }
+    }
+
+    for (int i = 0; i < n; i++) {
+        cout << i << " \t\t " << dist[i] << endl;
+    }
+}
+
+int main() {
+    int n = 5; 
+    vector<vector<int>> adj = {
+        {0, 10, 0, 5, 0},
+        {0, 0, 1, 2, 0},
+        {0, 0, 0, 0, 4},
+        {0, 3, 9, 0, 2},
+        {7, 0, 6, 0, 0}
+    };
+
+    dijkstra(n, adj, 0); 
+    return 0;
+}
